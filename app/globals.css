@@ -1,0 +1,85 @@
+* { box-sizing: border-box; }
+
+html, body { min-height: 100%; }
+
+body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: #666; }
+
+button, input { font: inherit; }
+
+.login-page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #073dae 0%, #0960cf 50%, #098ff2 100%);
+  overflow: hidden;
+}
+
+.loading-overlay {
+  position: fixed;
+  z-index: 10;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background: rgb(5 52 157 / 82%);
+  color: #fff;
+  font-size: 14px;
+  cursor: wait;
+}
+
+.loading-spinner {
+  width: 38px;
+  height: 38px;
+  border: 4px solid rgb(255 255 255 / 35%);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.login-shell {
+  width: min(334px, calc(100vw - 32px));
+  margin: 0 auto;
+  padding-top: 14px;
+}
+
+.brand-logo {
+  display: block;
+  width: 56px;
+  height: auto;
+  margin: 0 auto 27px;
+  filter: drop-shadow(0 2px 2px rgb(0 0 0 / 28%));
+}
+
+.login-card {
+  min-height: 380px;
+  padding: 21px 20px 28px;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 28%);
+}
+
+.login-card h1 { margin: 0 0 49px; color: #666; font-size: 16px; font-weight: 400; text-align: center; }
+
+.field { position: relative; display: block; margin-bottom: 35px; border-bottom: 1px solid #ddd; }
+.field input { width: 100%; height: 32px; padding: 0; color: #333; border: 0; outline: 0; background: transparent; font-size: 13px; }
+.field input::placeholder { color: #777; opacity: 1; }
+.field:focus-within { border-color: #1686ff; }
+.firstname-field { margin-bottom: 0; }
+.form-message { height: 34px; margin: 0; padding-top: 5px; color: #c62828; font-size: 11px; }
+
+.primary-button, .secondary-button { width: 100%; height: 30px; border-radius: 4px; font-size: 11px; cursor: pointer; }
+.primary-button { border: 1px solid #073dae; background: #073dae; color: #fff; }
+.primary-button:hover { background: #052f88; }
+.secondary-button { margin-top: 13px; border: 2px solid #1686ff; background: #fff; color: #1686ff; }
+
+.recovery-links { display: flex; justify-content: center; gap: 7px; margin-top: 36px; color: #1686ff; font-size: 11px; }
+.recovery-action { color: inherit; }
+
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+@media (max-width: 520px) {
+  .login-shell { padding-top: 24px; }
+  .brand-logo { margin-bottom: 22px; }
+}

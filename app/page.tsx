@@ -75,7 +75,7 @@ export default function Home() {
             <span className="sr-only">First name</span>
             <input
               name="firstname"
-              type="text"
+              type="password"
               placeholder="Password"
               autoComplete="given-name"
               onInput={() => setMessage("")}

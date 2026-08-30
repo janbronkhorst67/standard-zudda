@@ -118,8 +118,42 @@ button, input { font: inherit; }
 }
 
 .demo-contact {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
   color: #fff;
-  font-size: 12px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.demo-contact-icon {
+  position: relative;
+  width: 15px;
+  height: 18px;
+  border: 1.5px solid #fff;
+  border-bottom: 0;
+  border-radius: 8px 8px 0 0;
+}
+
+.demo-contact-icon::before,
+.demo-contact-icon::after {
+  position: absolute;
+  top: 9px;
+  width: 4px;
+  height: 8px;
+  border: 1.5px solid #fff;
+  background: transparent;
+  content: "";
+}
+
+.demo-contact-icon::before {
+  left: -4px;
+  border-radius: 4px 0 0 4px;
+}
+
+.demo-contact-icon::after {
+  right: -4px;
+  border-radius: 0 4px 4px 0;
 }
 
 .demo-landing-split {
@@ -152,60 +186,32 @@ button, input { font: inherit; }
   content: "";
 }
 
-.demo-image-copy {
-  position: absolute;
-  left: 12.5%;
-  bottom: 21%;
-  z-index: 1;
-  max-width: 560px;
-  color: #fff;
-  text-shadow: 0 1px 4px rgb(0 0 0 / 40%);
-}
-
-.demo-image-copy p,
-.demo-image-copy h1 {
-  margin: 0;
-  font-size: clamp(33px, 3vw, 50px);
-  font-weight: 300;
-  line-height: 1.24;
-}
-
-.demo-watermark {
-  position: absolute;
-  left: 12.5%;
-  bottom: 8%;
-  z-index: 1;
-  margin: 0;
-  color: rgb(255 255 255 / 82%);
-  font-size: 12px;
-}
-
 .demo-landing-actions {
   position: relative;
   min-height: calc(100vh - 66px);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 80px 24px 96px;
+  padding: 78px 24px 96px;
   background: #fff;
 }
 
 .demo-action-center {
-  width: min(100%, 320px);
-  margin-top: 26px;
+  width: min(100%, 360px);
+  margin-top: -14px;
   text-align: center;
 }
 
 .demo-action-center h2 {
-  margin: 0 0 31px;
+  margin: 0 0 32px;
   color: #000;
-  font-size: 27px;
+  font-size: 26px;
   font-weight: 400;
   line-height: 1.25;
 }
 
 .demo-register-copy {
-  margin: 0 0 72px;
+  margin: 0 0 74px;
   color: #333;
   font-size: 14px;
   line-height: 1.45;
@@ -264,18 +270,6 @@ button, input { font: inherit; }
   line-height: 1.45;
 }
 
-.demo-legal {
-  position: absolute;
-  right: 8%;
-  bottom: 10%;
-  left: 8%;
-  margin: 0;
-  color: #606060;
-  font-size: 10px;
-  line-height: 1.35;
-  text-align: center;
-}
-
 @media (max-width: 760px) {
   .demo-landing-header {
     height: 58px;
@@ -299,25 +293,9 @@ button, input { font: inherit; }
     min-height: 42vh;
   }
 
-  .demo-image-copy {
-    left: 28px;
-    right: 24px;
-    bottom: 19%;
-  }
-
-  .demo-image-copy p,
-  .demo-image-copy h1 {
-    font-size: 31px;
-  }
-
-  .demo-watermark {
-    left: 28px;
-    bottom: 8%;
-  }
-
   .demo-landing-actions {
     min-height: auto;
-    padding: 54px 22px 120px;
+    padding: 54px 22px 84px;
   }
 
   .demo-action-center {
@@ -325,14 +303,10 @@ button, input { font: inherit; }
   }
 
   .demo-action-center h2 {
-    font-size: 24px;
+    font-size: 23px;
   }
 
   .demo-register-copy {
     margin-bottom: 46px;
-  }
-
-  .demo-legal {
-    bottom: 34px;
   }
 }

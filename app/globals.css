@@ -83,3 +83,256 @@ button, input { font: inherit; }
   .login-shell { padding-top: 24px; }
   .brand-logo { margin-bottom: 22px; }
 }
+
+.demo-landing-page {
+  min-height: 100vh;
+  background: #fff;
+  color: #111;
+}
+
+.demo-landing-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 2;
+  height: 66px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 47px;
+  background: linear-gradient(90deg, #0641b7 0%, #09a2db 100%);
+  color: #fff;
+}
+
+.demo-landing-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.demo-landing-brand img {
+  width: 32px;
+  height: auto;
+}
+
+.demo-contact {
+  color: #fff;
+  font-size: 12px;
+}
+
+.demo-landing-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  min-height: 100vh;
+  padding-top: 66px;
+}
+
+.demo-landing-image-panel {
+  position: relative;
+  min-height: calc(100vh - 66px);
+  overflow: hidden;
+  background: #0b2853;
+}
+
+.demo-landing-image-panel img {
+  width: 100%;
+  height: 100%;
+  min-height: calc(100vh - 66px);
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.demo-landing-image-panel::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgb(0 31 83 / 10%), rgb(0 31 83 / 34%));
+  content: "";
+}
+
+.demo-image-copy {
+  position: absolute;
+  left: 12.5%;
+  bottom: 21%;
+  z-index: 1;
+  max-width: 560px;
+  color: #fff;
+  text-shadow: 0 1px 4px rgb(0 0 0 / 40%);
+}
+
+.demo-image-copy p,
+.demo-image-copy h1 {
+  margin: 0;
+  font-size: clamp(33px, 3vw, 50px);
+  font-weight: 300;
+  line-height: 1.24;
+}
+
+.demo-watermark {
+  position: absolute;
+  left: 12.5%;
+  bottom: 8%;
+  z-index: 1;
+  margin: 0;
+  color: rgb(255 255 255 / 82%);
+  font-size: 12px;
+}
+
+.demo-landing-actions {
+  position: relative;
+  min-height: calc(100vh - 66px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 24px 96px;
+  background: #fff;
+}
+
+.demo-action-center {
+  width: min(100%, 320px);
+  margin-top: 26px;
+  text-align: center;
+}
+
+.demo-action-center h2 {
+  margin: 0 0 31px;
+  color: #000;
+  font-size: 27px;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.demo-register-copy {
+  margin: 0 0 72px;
+  color: #333;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.demo-action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0 auto 35px;
+}
+
+.demo-signin-button,
+.demo-register-button {
+  width: 216px;
+  height: 35px;
+  margin: 0 auto;
+  border-radius: 18px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 35px;
+  text-align: center;
+}
+
+.demo-signin-button {
+  display: block;
+  border: 1px solid #0545b8;
+  background: #0545b8;
+  color: #fff;
+  text-decoration: none;
+}
+
+.demo-register-button {
+  border: 1px solid #0545b8;
+  background: #fff;
+  color: #0545b8;
+  cursor: default;
+}
+
+.demo-terms {
+  margin: 0 0 35px;
+  color: #666;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.demo-terms span,
+.demo-invitation span {
+  color: #468ce7;
+}
+
+.demo-invitation {
+  margin: 0;
+  color: #777;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.demo-legal {
+  position: absolute;
+  right: 8%;
+  bottom: 10%;
+  left: 8%;
+  margin: 0;
+  color: #606060;
+  font-size: 10px;
+  line-height: 1.35;
+  text-align: center;
+}
+
+@media (max-width: 760px) {
+  .demo-landing-header {
+    height: 58px;
+    padding: 0 22px;
+  }
+
+  .demo-landing-brand span {
+    display: none;
+  }
+
+  .demo-landing-split {
+    grid-template-columns: 1fr;
+    padding-top: 58px;
+  }
+
+  .demo-landing-image-panel {
+    min-height: 42vh;
+  }
+
+  .demo-landing-image-panel img {
+    min-height: 42vh;
+  }
+
+  .demo-image-copy {
+    left: 28px;
+    right: 24px;
+    bottom: 19%;
+  }
+
+  .demo-image-copy p,
+  .demo-image-copy h1 {
+    font-size: 31px;
+  }
+
+  .demo-watermark {
+    left: 28px;
+    bottom: 8%;
+  }
+
+  .demo-landing-actions {
+    min-height: auto;
+    padding: 54px 22px 120px;
+  }
+
+  .demo-action-center {
+    margin-top: 0;
+  }
+
+  .demo-action-center h2 {
+    font-size: 24px;
+  }
+
+  .demo-register-copy {
+    margin-bottom: 46px;
+  }
+
+  .demo-legal {
+    bottom: 34px;
+  }
+}

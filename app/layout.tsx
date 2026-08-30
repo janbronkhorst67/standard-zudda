@@ -6,8 +6,10 @@ export const metadata: Metadata = {
   title: "Sign In",
   description: "A simple, responsive sign-in form.",
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
+    icon: {
+      url: "/sbg.png",
+      type: "image/png",
+    },
   },
 };
 

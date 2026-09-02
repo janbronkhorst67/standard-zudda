@@ -2,5 +2,9 @@
 node_modules/
 out/
 
+.env
+.env.production
+.env.development.local
 .env*.local
+.env.test.local
 npm-debug.log*

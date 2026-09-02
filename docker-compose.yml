@@ -1,0 +1,9 @@
+services:
+  app:
+    build: .
+    container_name: standard-zudda-app
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "127.0.0.1:3001:3000"

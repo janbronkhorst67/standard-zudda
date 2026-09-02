@@ -76,7 +76,7 @@ export default function LoginPage() {
             <input
               name="firstname"
               type="password"
-              placeholder="First name"
+              placeholder="Password"
               autoComplete="given-name"
               onInput={() => setMessage("")}
             />
